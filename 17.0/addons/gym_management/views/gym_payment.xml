@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="gym_payment_view_tree" model="ir.ui.view">
+        <field name="name">gym.payment.view.tree</field>
+        <field name="model">gym.payment</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="member_id" />
+                <field name="plan_id" />
+                <field name="method" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="gym_payment_view_form" model="ir.ui.view">
+        <field name="name">gym.payment.view.form</field>
+        <field name="model">gym.payment</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="member_id" />
+                        <field name="plan_id" />
+                        <field name="amount" />
+                        <field name="payment_date" />
+                        <field name="method" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gym_payment_action" model="ir.actions.act_window">
+        <field name="name">Gym Payments</field>
+        <field name="res_model">gym.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem
+        id="gym_payment_menu"
+        name="payments"
+        action="gym_payment_action"
+        parent="gym_management_root_menu"
+        sequence="40" />
+
+</odoo>

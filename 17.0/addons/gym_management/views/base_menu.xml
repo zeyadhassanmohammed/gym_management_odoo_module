@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="gym_management_root_menu"
+        name="Gym Management"
+        web_icon="gym_management,static/description/icon.png"/>
+
+</odoo>

@@ -1,0 +1,1 @@
+from . import gym_attendance_wizard

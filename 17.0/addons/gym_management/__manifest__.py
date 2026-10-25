@@ -1,0 +1,26 @@
+{
+    'name': 'Gym Management',
+    'author': 'Zeyad Hassan',
+    'category': '',
+    'version': '17.0.0.1.0',
+    'depends': ['base','contacts'],
+    'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
+        'data/membership_plan_data.xml',
+        'data/cron.xml',
+        'data/sequence.xml',
+        'views/base_menu.xml',
+        'views/gym_member.xml',
+        'views/gym_trainer.xml',
+        'views/configuration.xml',
+        'views/membership_plan.xml',
+        'views/gym_class.xml',
+        'views/gym_attendance.xml',
+        'wizard/gym_attendance_wizard.xml',
+        'views/gym_payment.xml',
+        'views/res_partner.xml',
+        
+    ],
+    'application': True,
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="membership_plan_view_tree" model="ir.ui.view">
+        <field name="name">membership_plan_view_tree</field>
+        <field name="model">membership.plan</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="duration_months" />
+                <field name="price" />
+                <field name="class_credits" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="membership_plan_view_form" model="ir.ui.view">
+        <field name="name">membership_plan_view_form</field>
+        <field name="model">membership.plan</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="duration_months" />
+                        <field name="price" />
+                        <field name="class_credits" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="membership_plan_action" model="ir.actions.act_window">
+        <field name="name">Membership Plans</field>
+        <field name="res_model">membership.plan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="membership_plan_menu"
+        name="Membership Plans"
+        action="membership_plan_action"
+        parent="configuration_menu"
+    />
+</odoo>

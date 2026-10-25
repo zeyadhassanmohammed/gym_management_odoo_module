@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="membership_plan_view_form_inherit" model="ir.ui.view">
+        <field name="name">membership_plan_view_form</field>
+        <field name="model">membership.plan</field>
+        <field name="inherit_id" ref="gym_management.membership_plan_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group name="loyalty_discount_group">
+                    <field name="loyalty_discount" />
+
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

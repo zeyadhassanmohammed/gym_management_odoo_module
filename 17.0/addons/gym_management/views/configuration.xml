@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="configuration_menu"
+        name="Configuration"
+        parent="gym_management_root_menu"
+        sequence="60"
+    />
+
+</odoo>

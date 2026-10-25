@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="gym_trainer_view_tree" model="ir.ui.view">
+        <field name="name">gym trainer tree</field>
+        <field name="model">gym.trainer</field>
+        <field name="arch" type="xml">
+            <tree string="Gym trainers">
+                <field name="name" />
+                <field name="specialty" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="gym_trainer_view_form" model="ir.ui.view">
+        <field name="name">gym trainer form</field>
+        <field name="model">gym.trainer</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group name="rtainer_details" string="Trainer Details">
+                            <field name="name" />
+                            <field name="specialty" />
+                            <field name="user_id" options="{'no_create':True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gym_trainer_action" model="ir.actions.act_window">
+        <field name="name">Gym Trainers</field>
+        <field name="res_model">gym.trainer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="gym_management_root_menu"
+        id="gym_trainer_menu"
+        name="Gym trainers"
+        action="gym_trainer_action"
+        sequence="30"
+    />
+</odoo>

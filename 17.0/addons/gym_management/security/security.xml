@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="gym_management" model="ir.module.category">
+            <field name="name">Gym Management</field>
+        </record>
+
+
+        <record id="gym_manager_group" model="res.groups">
+            <field name="name">Gym Manager</field>
+            <field name="category_id" ref="gym_management" />
+        </record>
+
+        <record id="gym_receptionist_group" model="res.groups">
+            <field name="name">Gym Receptionist</field>
+            <field name="category_id" ref="gym_management" />
+        </record>
+
+        <record id="gym_trainer_group" model="res.groups">
+            <field name="name">Gym Trainer</field>
+            <field name="category_id" ref="gym_management" />
+        </record>
+
+    </data>
+
+    <record id="rule_gym_class_trainer_only" model="ir.rule">
+        <field name="name">Trainer sees only their own classes</field>
+        <field name="model_id" ref="model_gym_class" />
+        <field name="domain_force">[('trainer_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('gym_trainer_group'))]" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="1" />
+        <field name="perm_create" eval="1" />
+        <field name="perm_unlink" eval="1" />
+    </record>
+
+
+</odoo>

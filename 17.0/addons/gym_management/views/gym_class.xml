@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="gym_class_view_tree" model="ir.ui.view">
+        <field name="name">gym.class.view.tree</field>
+        <field name="model">gym.class</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+                <field name="trainer_id" />
+                <field name="room" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="capacity" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="gym_class_view_form" model="ir.ui.view">
+        <field name="name">gym.class.view.form</field>
+        <field name="model">gym.class</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <header>
+                        <button name="action_take_attendance" string="Take Attendance" type="object"
+                            class="btn-primary" />
+                    </header>
+                    <group>
+                        <field name="name" />
+                        <field name="trainer_id" />
+                        <field name="room" />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="capacity" />
+                    </group>
+
+                    <notebook>
+                        <page name="attendees_page" string="Attendees">
+                            <field name="member_ids" />
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="gym_class_action" model="ir.actions.act_window">
+        <field name="name">Gym classes</field>
+        <field name="res_model">gym.class</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="gym_class_menu"
+        name="gym classes"
+        action="gym_class_action"
+        parent="gym_management_root_menu"
+        sequence="20" />
+
+</odoo>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="gym_member_view_tree" model="ir.ui.view">
+        <field name="name">gym member tree</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="state == 'expired'" decoration-info="state == 'frozen'">
+                <field name="name" />
+                <field name="phone" />
+                <field name="join_date" />
+                <field name="state" />
+                <field name="remaining_credits" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="gym_member_view_form" model="ir.ui.view">
+        <field name="name">gym member form</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <field name="image" widget='image' class='oe_avatar' />
+                <header>
+                    <field name="state" widget="statusbar" />
+
+                    <button name="action_active" string="Set to Active" type="object"
+                        class="btn-success" />
+                    <button name="action_expired" string="Set to Expired" type="object"
+                        class="btn-primary" />
+                    <button name="action_frozen" string="Set to Frozen" type="object"
+                        class="btn-danger" />
+
+                </header>
+                <sheet>
+                    <div>
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-warning"
+                            invisible="active" />
+                        <widget name="web_ribbon" title="frozen" bg_color="text-bg-danger"
+                            invisible="state !='frozen'" />
+                    </div>
+                    <div class="oe_title">
+                        <label for="ref"/>
+                       <h1> <field name="ref" /></h1>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="email" widget='email' />
+                            <field name="phone" />
+                            <field name="join_date" />
+                            <field name="birth_date" />
+                        </group>
+                        <group>
+                            <field name="active" />
+                            <field name="membership_plan_id" />
+                            <field name="plan_price" />
+                            <field name="membership_end_date" />
+                            <field name="days_remaining" />
+                            <field name="remaining_credits" />
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="classes" string="Classes">
+                            <field name="class_ids" />
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="gym_member_action" model="ir.actions.act_window">
+        <field name="name">Gym Members</field>
+        <field name="res_model">gym.member</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        parent="gym_management_root_menu"
+        id="gym_member_menu"
+        name="Gym Members"
+        action="gym_member_action"
+        sequence="10"
+    />
+</odoo>
