@@ -6,6 +6,7 @@ class GymClass(models.Model):
     _description='gym class'
 
     name=fields.Char(string='Class Name',required=True)
+    state= fields.Selection([("active","Active"),("closed","Closed")],string="Session State")
     trainer_id = fields.Many2one('gym.trainer', string='Trainer')
     room = fields.Char('Room')
     start_date = fields.Datetime('Start Date')
@@ -30,3 +31,11 @@ class GymClass(models.Model):
             'res_id': wizard.id,
             'target': 'new',
         }
+
+    def set_state_to_active(self):
+        for rec in self:
+            rec.state="active"
+
+    def set_state_to_closed(self):
+        for rec in self:
+            rec.state="closed"

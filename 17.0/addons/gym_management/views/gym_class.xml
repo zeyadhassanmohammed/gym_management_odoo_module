@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name" />
+                <field name="state" />
                 <field name="trainer_id" />
                 <field name="room" />
                 <field name="start_date" />
@@ -24,6 +25,11 @@
                     <header>
                         <button name="action_take_attendance" string="Take Attendance" type="object"
                             class="btn-primary" />
+                        <button name="set_state_to_active" string="active" type="object"
+                            class="btn-success" />
+                        <button name="set_state_to_closed" string="closed" type="object"
+                            class="btn-danger" />
+                            <field name="state" widget="statusbar"/>
                     </header>
                     <group>
                         <field name="name" />
