@@ -75,7 +75,16 @@
         </field>
     </record>
 
-
+    <record id="view_gym_member_search_view" model="ir.ui.view">
+        <field name="name">gym member search</field>
+        <field name="model">gym.member</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="filter_active_state" string="Active Members"
+                    domain="[('state', '=', 'active')]" />
+            </search>
+        </field>
+    </record>
     <record id="gym_member_action" model="ir.actions.act_window">
         <field name="name">Gym Members</field>
         <field name="res_model">gym.member</field>

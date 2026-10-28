@@ -21,7 +21,7 @@ class GymMember(models.Model):
     membership_plan_id=fields.Many2one('membership.plan', string="Membership Plan")
     class_ids = fields.Many2many('gym.class', string='class')
     payment_ids = fields.One2many('gym.payment', 'member_id', string='payment')
-    membership_end_date=fields.Date(compute='_compute_membership_end_date') #computed field
+    membership_end_date=fields.Date(compute='_compute_membership_end_date',store=True) #computed field
     days_remaining = fields.Integer(compute='_compute_days_remaining')
     remaining_credits = fields.Integer(compute='check_remaining_credits', string='Remaining Credits') #computed field
     attendance_ids = fields.One2many('gym.attendance', 'member_id', string='Attendance Records')
@@ -99,8 +99,7 @@ class GymMember(models.Model):
 
     @api.model
     def _cron_update_expired_memberships(self):
-        expired_members=self.search([('active','=',True),('membership_end_date','<',date.today())])
-
+        expired_members=self.search([('state','=','active'),('membership_end_date','<',date.today())])
 
         if expired_members:
             expired_members.write({'state':'expired'})
