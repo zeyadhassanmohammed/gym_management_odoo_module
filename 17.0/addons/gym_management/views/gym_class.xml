@@ -42,7 +42,7 @@
 
                     <notebook>
                         <page name="attendees_page" string="Attendees">
-                            <field name="member_ids" />
+                            <field name="member_ids" context="{'search_default_filter_active_state':1}"/>
 
                         </page>
                     </notebook>
